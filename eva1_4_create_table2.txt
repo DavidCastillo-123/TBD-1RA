@@ -1,0 +1,107 @@
+MySQL Shell 8.0.46
+
+Copyright (c) 2016, 2026, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost;
+Creating a Classic session to 'root@localhost;'
+Please provide the password for 'root@localhost;': **********
+MySQL Error 2005 (HY000): Unknown MySQL server host 'localhost;' (11001)
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 11
+Server version: 8.0.46 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show tables;
+ERROR: 1046 (3D000): No database selected
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| taller2            |
+| world              |
++--------------------+
+7 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  SQL > show taller2,
+                               -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'taller2,' at line 1
+ MySQL  localhost:3306 ssl  SQL > use taller2;
+Default schema set to `taller2`.
+Fetching global names, object names from `taller2` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  taller2  SQL > show tables;
++-------------------+
+| Tables_in_taller2 |
++-------------------+
+| persona           |
++-------------------+
+1 row in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > show persona;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'persona' at line 1
+ MySQL  localhost:3306 ssl  taller2  SQL > desc persona;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_persona | int         | NO   | PRI | NULL    | auto_increment |
+| nombre     | varchar(50) | NO   |     | NULL    |                |
+| ap_paterno | varchar(50) | NO   |     | NULL    |                |
+| ap_materno | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac  | date        | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.0056 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > create table veiculo;
+ERROR: 4028 (HY000): A table must have at least one visible column.
+ MySQL  localhost:3306 ssl  taller2  SQL > create table veiculo
+                                        -> ;
+ERROR: 4028 (HY000): A table must have at least one visible column.
+ MySQL  localhost:3306 ssl  taller2  SQL > create table vehiculo
+                                        -> (id_vehiculo int not null key auto_increment,
+                                        -> color enum("rojo""azul""morado""verde")
+                                        -> ,
+                                        -> precio int check(precio<1000000);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5
+ MySQL  localhost:3306 ssl  taller2  SQL > create table vehiculo
+                                        -> (id_vehiculo int not null key auto_increment,
+                                        -> color enum("rojo","azul","morado","verde"),
+                                        -> precio int check(precio<1000000);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+ MySQL  localhost:3306 ssl  taller2  SQL > create table vehiculo (id_vehiculo int not null key auto_increment, color enum("rojo","azul","morado","verde"), precio int check(precio<1000000));
+Query OK, 0 rows affected (0.0218 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > show vehiculo;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vehiculo' at line 1
+ MySQL  localhost:3306 ssl  taller2  SQL > show vehiculo;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vehiculo' at line 1
+ MySQL  localhost:3306 ssl  taller2  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| taller2            |
+| world              |
++--------------------+
+7 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > desc vehiculo;
++-------------+--------------------------------------+------+-----+---------+----------------+
+| Field       | Type                                 | Null | Key | Default | Extra          |
++-------------+--------------------------------------+------+-----+---------+----------------+
+| id_vehiculo | int                                  | NO   | PRI | NULL    | auto_increment |
+| color       | enum('rojo','azul','morado','verde') | YES  |     | NULL    |                |
+| precio      | int                                  | YES  |     | NULL    |                |
++-------------+--------------------------------------+------+-----+---------+----------------+
+3 rows in set (0.0027 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > show vehiculo;show vehiculo;
+EVA1-1-FORMATEO-TEXTO.pdf
+

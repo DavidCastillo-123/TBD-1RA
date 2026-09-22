@@ -1,0 +1,157 @@
+MySQL Shell 8.0.46
+
+Copyright (c) 2016, 2026, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.46 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases
+                               -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| taller2            |
+| world              |
++--------------------+
+7 rows in set (0.0047 sec)
+ MySQL  localhost:3306 ssl  SQL > taller2
+                               -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'taller2' at line 1
+ MySQL  localhost:3306 ssl  SQL > use taller2
+Default schema set to `taller2`.
+Fetching global names, object names from `taller2` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona(
+                                        -> nombre vachar(50)not null,ap_paterno varchart(50)not null,ap_materno(50) null,
+                                        -> fecha_nac date not null) ,ap_paterno varchart(50)not null,ap_materno(50) null,
+                                        -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'null_increment key,
+nombre vachar(50)not null,ap_paterno varchart(50)not null,ap' at line 2
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona(
+                                        -> id_persona int no null auto_increment key,
+                                        -> nombre vachar(50)not null,
+                                        -> ,ap_paterno varchart(50)not null,
+                                        -> create table persona( id_persona int not null_increment key, nombre vachar(50)not null,ap_paterno varchart(50)not null,ap_materno(50) null, fecha_nac date not null) ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no null auto_increment key,
+nombre vachar(50)not null,
+,ap_paterno varchart(50)n' at line 2
+ MySQL  localhost:3306 ssl  taller2  SQL >  create table persona(
+                                        -> id_persona int no null auto_increment key,
+                                        -> nombre vachar(50)not null,
+                                        -> ap_paterno varchart(50)not null,
+                                        -> ap_materno(50) null,
+                                        -> fecha_nac date not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no null auto_increment key,
+nombre vachar(50)not null,
+ap_paterno varchart(50)no' at line 2
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona(
+                                        ->                                         -> id_persona int no null auto_increment key,
+                                        ->                                         -> nombre vachar(50)not null,
+                                        ->                                         -> ap_paterno varchart(50)not null,
+                                        ->                                         -> ap_materno(50) null,
+                                        ->                                         -> fecha_nac date not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> id_persona int no null auto_increment key,
+                                  ' at line 2
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona(
+                                        -> id_persona int not null auto_increment key,
+                                        -> nombre vachar(50)not null,
+                                        -> ap_paterno varchar(50)not null,
+                                        -> ap_materno varchar(50) null,
+                                        -> fecha_nac date not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vachar(50)not null,
+ap_paterno varchar(50)not null,
+ap_materno varchar(50) null,' at line 3
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona( id_persona int not null auto_increment key, nombre vachar(50) not null, ap_paterno varchar(50)not null, ap_materno varchar(50) null, fecha_nac date not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vachar(50) not null, ap_paterno varchar(50)not null, ap_materno varchar(50) null' at line 1
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona( id_persona int not null auto_increment key, nombre varchar(50)not null, ap_paterno varchar(50)not null, ap_materno varchar(50) null, fecha_nac date not null);
+Query OK, 0 rows affected (0.0318 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > show tables
+                                        -> ;
++-------------------+
+| Tables_in_taller2 |
++-------------------+
+| persona           |
++-------------------+
+1 row in set (0.0053 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > desc persona;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_persona | int         | NO   | PRI | NULL    | auto_increment |
+| nombre     | varchar(50) | NO   |     | NULL    |                |
+| ap_paterno | varchar(50) | NO   |     | NULL    |                |
+| ap_materno | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac  | date        | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.0030 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > drop table persona;
+Query OK, 0 rows affected (0.0195 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > show tables
+                                        -> ;
+Empty set (0.0020 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > create table persona( id_persona int not null auto_increment key, nombre varchar(50)not null, ap_paterno varchar(50)not null, ap_materno varchar(50) null, fecha_nac date not null);
+Query OK, 0 rows affected (0.0198 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > show tables;
++-------------------+
+| Tables_in_taller2 |
++-------------------+
+| persona           |
++-------------------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > desc persona;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id_persona | int         | NO   | PRI | NULL    | auto_increment |
+| nombre     | varchar(50) | NO   |     | NULL    |                |
+| ap_paterno | varchar(50) | NO   |     | NULL    |                |
+| ap_materno | varchar(50) | YES  |     | NULL    |                |
+| fecha_nac  | date        | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.0025 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > insert into
+                                        -> persona
+                                        -> value(1,"juan", "gabriel","jolote","1970-11-12");
+Query OK, 1 row affected (0.0128 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > select * from persona;
++------------+--------+------------+------------+------------+
+| id_persona | nombre | ap_paterno | ap_materno | fecha_nac  |
++------------+--------+------------+------------+------------+
+|          1 | juan   | gabriel    | jolote     | 1970-11-12 |
++------------+--------+------------+------------+------------+
+1 row in set (0.0019 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > insert into persona value(2,"juan", "gabriel","jolote","1970-11-12");
+Query OK, 1 row affected (0.0027 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > select * from persona;
++------------+--------+------------+------------+------------+
+| id_persona | nombre | ap_paterno | ap_materno | fecha_nac  |
++------------+--------+------------+------------+------------+
+|          1 | juan   | gabriel    | jolote     | 1970-11-12 |
+|          2 | juan   | gabriel    | jolote     | 1970-11-12 |
++------------+--------+------------+------------+------------+
+2 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > insert into persona(nombre, ap_paterno, fecha_nac)
+                                        -> value("pedro","paramo","1920-10-23");
+Query OK, 1 row affected (0.0058 sec)
+ MySQL  localhost:3306 ssl  taller2  SQL > select * from persona;
++------------+--------+------------+------------+------------+
+| id_persona | nombre | ap_paterno | ap_materno | fecha_nac  |
++------------+--------+------------+------------+------------+
+|          1 | juan   | gabriel    | jolote     | 1970-11-12 |
+|          2 | juan   | gabriel    | jolote     | 1970-11-12 |
+|          3 | pedro  | paramo     | NULL       | 1920-10-23 |
++------------+--------+------------+------------+------------+
+3 rows in set (0.0009 sec)
+(i-search)`':

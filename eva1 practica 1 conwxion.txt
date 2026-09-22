@@ -1,0 +1,14 @@
+MySQL Shell 8.0.46
+Copyright (c) 2016, 2026, Oracle and/or its affiliates.
+
+\sql
+\connect --mc root@localhost
+create database tallerbd;
+show databases;
+use tallerbd;
+show create database tallerbd;
+show character set;
+drop database tallerbd;
+show databases;
+create database taller2;
+use taller2;
